@@ -1,0 +1,7 @@
+1/本计算器程到周四下午的时候依然错误百出，因此最后序参考了网上的计算器资料
+2/本程序基于python 3.5.1开发的计算器小程序,因此执行前请确保python 版本在3.0以上.
+3/主程序为index.py,执行之前请使用chmod a+x index.py给予执行权限,或使用python3 index.py执行.
+4/如有问题请联系作者本人QQ  1669121886.
+
+
+本次博客地址:http://www.cnblogs.com/zhang-shijie/p/5154719.html
