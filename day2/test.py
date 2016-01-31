@@ -12,6 +12,4 @@ msg = """
 """ %(name,name,age,job)
 print(msg)
 
-
-
 a = list()
