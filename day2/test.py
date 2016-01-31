@@ -11,5 +11,4 @@ msg = """
         Job:%s
 """ %(name,name,age,job)
 print(msg)
-
 a = list()
