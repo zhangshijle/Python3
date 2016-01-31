@@ -31,7 +31,6 @@ def user_login_func():  #用户登录认认证函数
             print("用户或密码错误,请重新输入!")
 
 
-
 def haproxy_add_func():
     backend_name = '{"backend":"test.oldboy.org","record":{"server":"100.1.7.999 100.1.7.999","weight":20,"maxconn":30}}' #举例要添加的格式
     user_input_data = input("\n请输入要添加的完整的backend名称,可复制--> %s\033[31;1m\n请在此输入要添加的backend的全称:\033[1m" % backend_name)
