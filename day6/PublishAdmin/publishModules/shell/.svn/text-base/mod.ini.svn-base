@@ -1,0 +1,63 @@
+[example]
+
+
+[wap]
+path = /usr/local/wap/webapps
+type = java
+tomcat_path = /usr/local/wap
+ip = 223.202.100.205
+user = root
+password = zy5@z48,,igK
+is_compress = 1
+
+
+[proxy]
+path = /usr/local/proxy/webapps
+type = java
+tomcat_path = /usr/local/proxy
+ip = 223.202.100.201
+
+
+[wbportal]
+path = /usr/local/portal/wbportal
+type = java
+tomcat_path = /usr/local/portal
+ip = 223.202.100.205
+port = 37815
+
+
+[www]
+path = /home/cmcc/www/www
+type = php
+ip = 122.11.49.134
+
+
+[msgserver]
+path = /home/cmcc/c/msgserver
+type = c
+ip = 122.11.49.130
+
+
+[imageserver]
+path = /home/cmcc/c/imageserver
+type = c
+ip = 122.11.49.130
+
+
+[new]
+type = java
+path = /var/www/html
+ip = 127.0.0.1
+
+
+[klklk]
+type = java
+is_compress = on
+path = path
+ip = ip
+tomcat_path = tomcat
+user = user
+
+
+
+

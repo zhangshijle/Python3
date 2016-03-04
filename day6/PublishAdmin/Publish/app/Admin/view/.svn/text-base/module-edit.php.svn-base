@@ -1,0 +1,68 @@
+
+<legend>编辑模块</legend>
+<form class="form-horizontal" method="post">
+    <fieldset>
+
+        <div class="control-group">
+            <label for="name" class="control-label">模块名称：</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="name" name="name" placeholder="name" value="<?php echo $this->data['name'];?>">（必填）
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="select" class="control-label">模块类型：</label>
+            <div class="col-lg-10">
+                <select class="form-control" name="data[type]" id="select">
+                    <?php
+                        foreach($this->data['moduleType'] as $val){
+                            echo "<option ".($this->data['data']['type']==$val ? 'selected' : '').">$val</option>";
+                        }
+                    ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="path" class="control-label">部署路径：</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="path" name="data[path]" placeholder="path" value="<?php if(isset($this->data['data']['path'])) echo $this->data['data']['path'];?>">（必填）
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="ip" class="control-label">服务器IP：</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="ip" name="data[ip]" placeholder="ip" value="<?php if(isset($this->data['data']['ip'])) echo $this->data['data']['ip'];?>">(必填 ip:端口 多个ip 使用竖线（|）分割 ip = 1.1.1.1:50030|2.2.2.2:40010)
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="tomcat_path" class="control-label">tomcat路径：</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="tomcat_path" name="data[tomcat_path]" placeholder="tomcat_path" value="<?php if(isset($this->data['data']['tomcat_path'])) echo $this->data['data']['tomcat_path'];?>">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="user" class="control-label">ssh用户名及密码：</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="user" name="data[user]" placeholder="user" value="<?php if(isset($this->data['data']['user'])) echo $this->data['data']['user'];?>">（用户名@密码 多个用逗号（,）分割）
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="is_compress2" class="control-label">上传文件是否是压缩包：</label>
+            <div class="col-lg-10">
+                <input type="radio" name="data[is_compress]" id="is_compress1" value="True" <?php if(isset($this->data['data']['is_compress']) && $this->data['data']['is_compress']){echo "checked";}?>> 是
+                <input type="radio" name="data[is_compress]" id="is_compress2" <?php if(!isset($this->data['data']['is_compress']) || !$this->data['data']['is_compress']){echo "checked";}?>> 否
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="offset2">
+                <button class="btn btn-default">取消</button>
+                <button type="submit" class="btn btn-primary">提交</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
