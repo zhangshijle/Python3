@@ -1,0 +1,5 @@
+1/config_file.py 是生成主机配置信息和文件的程序
+2/主执行程序为host_manager.py
+3/主机配置保存在example.ini文件
+4/home目录保存了用户的下载目录
+5/host_log.txt记录日志
