@@ -26,4 +26,4 @@ while True:
     else:
         print("没有出现异常即代码执行成功3才执行")
     finally:
-        print("不管有没有异常都执行")
+        print("不管有没有异常都执行..")
