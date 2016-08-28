@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <dev id="i1" style="display: inline-block;background-color: green;color: white">欢迎宝强光临指导!</dev><br/><br>
+    <dev id="i2" style="display: inline-block;background-color: green;color: white">欢迎宝强光临指导!</dev>
+
+
+
+    <script>
+        setInterval("f1();",100)
+        function  f1(){
+            var  tag = document.getElementById('i1');
+            var text = tag.innerText;
+            var a = text.charAt(0);
+            var sub=text.substring(1,text.length)
+            var new_str= sub + a
+            tag.innerText = new_str
+        }
+    </script>
+</body>
+</html>
