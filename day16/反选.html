@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="全选" onclick="CheckAll()" />
+<input type="button" value="取消" onclick="CancleAll()" />
+<input type="button" value="反选" onclick="ReverseAll()" />
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户</th>
+            <th>密码</th>
+        </tr>
+    </thead>
+    <tbody id="tb">
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>jack</td>
+            <td>pass</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>tom</td>
+            <td>pass</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>jhon</td>
+            <td>pass</td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+<script>
+    function CheckAll(){
+        var tb = document.getElementById("tb");
+        var trs = tb.children;
+        for(var i=0;i<trs.length;i++){
+            var  current_tr = trs[i];
+            var  ck = current_tr.firstElementChild.firstElementChild;
+//            ck.setAttribute("checked","checked");
+            ck.checked=true;
+        }
+    }
+
+    function CancleAll(){
+        var tb = document.getElementById("tb");
+        var trs = tb.children;
+        for(var i=0;i<trs.length;i++){
+            var  current_tr = trs[i];
+            var  ck = current_tr.firstElementChild.firstElementChild;
+//            ck.removeAttribute("checked");
+            ck.checked=false;
+        }
+    }
+
+    function  ReverseAll(){
+        var tb = document.getElementById("tb");
+        var trs = tb.children;
+        for(var i=0;i<trs.length;i++){
+            var  current_tr = trs[i];
+            var ck = current_tr.firstElementChild.firstElementChild;
+            if(ck.checked){
+                ck.checked = false;
+//                ch.removeAttribute("checked");
+            }else{
+                ck.checked = true;
+//                ck.setAttribute("checked","checked");
+            }
+        }
+    }
+</script>
+
+
+</body>
+</html>
