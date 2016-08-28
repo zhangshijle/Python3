@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+
+    <style>
+        .item{
+            width: 250px;
+            height: 60px;
+            position: relative;
+        }
+        .item input{
+            width: 200px;
+        }
+        .item span{
+            position: absolute;
+            top: 20px;
+            left: 0px;
+            font-size: 8px;
+            background-color: indianred;
+            color: white;
+            display: inline-block;
+            width: 200px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div>
+        <form>
+            <div class="item">
+                <input class="c1" type="text" name="username" label="用户名"/>
+                <!--<span>用户名不能为空</span>-->
+            </div>
+            <div class="item">
+                <input  class="c1" type="password" name="pwd" label="密码"/>
+                <!--<span>密码不能为空</span>-->
+            </div>
+            <input type="submit" value="提交" onclick="return CheckValid();" />
+        </form>
+    </div>
+
+    <script>
+        function  CheckValid(){
+            // 找到form标签下的所有需要验证的标签
+            // 循环所有需要验证的标签,获取内容进行内容合法性验证
+            // 先声明一个装为true,后面如果有输入不合法的就改为false不在检查其他的输入
+            var flag = true;
+
+            //删除之前的span标签
+            $('form .item span').remove();
+            //jqure函数,循环获取到的每一个标签,对每一个标签执行操作
+            $('form .c1').each(function() {
+
+                //局部变量,获取到循环到每一个标签对的值
+                var  val = $(this).val();
+                //console.log(val,"123de");
+
+                //判断输入长度是否小于等于0,是就等于没有输入任何内容
+                if (val.length<=0){
+                    //获取到标签中label的值
+                    var label = $(this).attr('label');
+
+                    //通过dom添加一个span标签,值为获取到的label+自定义的值
+                    var tag = document.createElement('span');
+                    tag.innerText = label + "不能为空";
+
+                    //将tag添加到循环到的元素之后
+                    $(this).after(tag);
+
+                    //如果走到这里,说明此标签的输入没有通过,就讲flag改为false,这样就不会再检查其他对象的值
+                    flag = false;
+                }
+            });
+            return flag;
+        }
+    </script>
+
+</body>
+</html>

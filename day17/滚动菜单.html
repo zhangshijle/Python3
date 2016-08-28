@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        body{
+            margin: 0px;
+        }
+        img {
+            border: 0;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .wrap{
+            width: 980px;
+            margin: 0 auto;
+        }
+        
+        .pg-header{
+            background-color: #303a40;
+            -webkit-box-shadow: 0 2px 5px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 2px 5px rgba(0,0,0,.2);
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .pg-header .logo{
+            float: left;
+            padding:5px 10px 5px 0px;
+        }
+        .pg-header .logo img{
+            vertical-align: middle;
+            width: 110px;
+            height: 40px;
+
+        }
+        .pg-header .nav{
+            line-height: 50px;
+        }
+        .pg-header .nav ul li{
+            float: left;
+        }
+        .pg-header .nav ul li a{
+            display: block;
+            color: #ccc;
+            padding: 0 20px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .pg-header .nav ul li a:hover{
+            color: #fff;
+            background-color: #425a66;
+        }
+        .pg-body{
+
+        }
+        .pg-body .catalog{
+            position: absolute;
+            top:60px;
+            width: 200px;
+            background-color: #fafafa;
+            bottom: 0px;
+        }
+        .pg-body .catalog.fixed{
+            position: fixed;
+            top:10px;
+        }
+
+        .pg-body .catalog .catalog-item.active{
+            color: #fff;
+            background-color: #425a66;
+        }
+
+        .pg-body .content{
+            position: absolute;
+            top:60px;
+            width: 700px;
+            margin-left: 210px;
+            background-color: #fafafa;
+            overflow: auto;
+        }
+        .pg-body .content .section{
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pg-header">
+        <div class="wrap clearfix">
+            <div class="logo">
+                <a href="#">
+                    <img src="">
+                </a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a  href="#">首页</a>
+                    </li>
+                    <li>
+                        <a  href="#">功能一</a>
+                    </li>
+                    <li>
+                        <a  href="#">功能二</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    
+	<div class="pg-body">
+        <div class="wrap">
+            <div class="catalog">
+                <div class="catalog-item" auto-to="function1"><a>第1张</a></div>
+                <div class="catalog-item" auto-to="function2"><a>第2张</a></div>
+                <div class="catalog-item" auto-to="function3"><a>第3张</a></div>
+            </div>
+            
+			<div class="content">
+                <div menu="function1" class="section" style='background-color:green;'>
+                    <h1>第一章</h1>
+                </div>
+                <div menu="function2" class="section" style='background-color:yellow;'>
+                    <h1>第二章</h1>
+                </div>
+                <div menu="function3" class="section" style='background-color:red;'>
+                    <h1>第三章</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        
+		$(function(){
+			// 自动执行
+            Init();
+        });
+		
+		
+        function Init(){
+		
+			
+            $(window).scroll(function() {
+				// 监听窗口滚动事件
+				
+				
+                // 获取滚动条高度
+                var scrollTop = $(window).scrollTop();
+				
+				
+				// 当滚动到50像素时，左侧带菜单固定
+                if(scrollTop > 50){
+                    $('.catalog').addClass('fixed');
+                }else{
+                    //$('.catalog').children().removeClass('active');
+                    $('.catalog').removeClass('fixed');
+                }
+
+                // 循环所有的内容
+                $('.content').children().each(function(){
+                    // 当前标签距离顶部高度
+                    var offSet = $(this).offset(); // 高度，左边有多远
+					offSet.top 
+					offSet.left
+					
+					
+					// 自身高度
+                    var height = $(this).height();
+					
+					//offSet<滚动高度<offSet+height
+					
+					
+                    // 当前内容高度 - 滚动高度，如果滚动到内容一时，此值为0；
+                    var offTop = offSet.top - scrollTop;
+                    
+
+                    // 当前内容位于用户阅览区
+                    if(scrollTop>offSet.top && scrollTop< offSet.top + height){
+						// $(this) 当前内容标签
+						var target = $(this).attr('menu');
+						$('.catalog').find('div[auto-to="'+target+'"]').addClass('active').siblings().removeClass('active');
+					
+						/*
+                        var docHeight = $(document).height();
+                        var winHeight = $(window).height();
+                        // 如果，滚轮到达底部，则显示最后一个菜单
+                        if(docHeight == winHeight+scrollTop)
+                        {
+                            $('.catalog').find('div:last-child').addClass('active').siblings().removeClass('active');
+                        }else{
+                            var target = $(this).attr('menu');
+                            $('.catalog').find('div[auto-to="'+target+'"]').addClass('active').siblings().removeClass('active');
+                        }
+                        return false;
+						*/
+                    }
+                });
+
+            });
+
+
+        }
+
+    </script>
+</body>
+</html>
